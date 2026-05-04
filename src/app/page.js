@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ShieldCheck, Zap, BarChart3, MapPin, Home } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Zap, BarChart3, MapPin, Home as HomeIcon } from 'lucide-react';
 
 
 export default function Home() {
@@ -113,8 +113,9 @@ export default function Home() {
               { 
                 title: 'House Hacking', 
                 desc: 'Live for free by renting out portions of your property.',
-                icon: <Home />
+                icon: <HomeIcon />
               },
+
               { 
                 title: 'Seller Financing', 
                 desc: 'Skip the bank and negotiate terms directly with the owner.',
