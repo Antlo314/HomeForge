@@ -54,7 +54,7 @@ export default function PropertyCard({ property }) {
           <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><Square size={16} /> {property.sqft} sqft</span>
         </div>
         
-        <div style={{ marginTop: '1.5rem', display: 'flex', gap: '0.5rem' }}>
+        <div style={{ marginTop: '1.5rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
           {property.tags.map((tag, i) => (
             <span key={i} style={{ 
               fontSize: '0.7rem', 
@@ -68,7 +68,14 @@ export default function PropertyCard({ property }) {
             </span>
           ))}
         </div>
+
+        <div style={{ marginTop: '1.5rem', borderTop: '1px solid rgba(20, 83, 45, 0.05)', paddingTop: '1.25rem' }}>
+          <a href="/analyzer" className="btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '0.75rem', fontSize: '0.85rem' }}>
+            <Zap size={14} color="var(--accent)" /> Analyze with AI
+          </a>
+        </div>
       </div>
+
     </div>
   );
 }

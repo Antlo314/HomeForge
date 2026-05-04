@@ -7,7 +7,6 @@ import { ArrowRight, ShieldCheck, Zap, BarChart3, MapPin, Home as HomeIcon, Lock
 export default function Home() {
   return (
     <div>
-      {/* Hero Section */}
       <section className="section-padding" style={{ position: 'relative', overflow: 'hidden' }}>
         <div className="container" style={{
           display: 'grid',
@@ -96,6 +95,60 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+
+      {/* Instant AI Analyzer Section */}
+      <section className="section-padding" style={{ backgroundColor: 'var(--white)', marginTop: '-100px', position: 'relative', zIndex: 10 }}>
+        <div className="container">
+          <div className="card shadow-lg" style={{ padding: '4rem', maxWidth: '1000px', margin: '0 auto', border: '1px solid rgba(20, 83, 45, 0.05)' }}>
+            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              <div style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>Instant Intelligence</div>
+              <h2 className="serif" style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Analyze Your Next <span style={{ color: 'var(--accent)' }}>Creative Deal</span></h2>
+              <p style={{ color: 'var(--text-muted)' }}>Paste listing details or property URL to see simulated strategies instantly.</p>
+            </div>
+
+            <div style={{ position: 'relative' }}>
+              <textarea 
+                placeholder="Paste property description, seller terms, or URL here..."
+                style={{
+                  width: '100%',
+                  height: '160px',
+                  padding: '1.5rem',
+                  borderRadius: '16px',
+                  border: '1px solid rgba(20, 83, 45, 0.1)',
+                  backgroundColor: 'var(--bg-off-white)',
+                  fontSize: '1rem',
+                  outline: 'none',
+                  resize: 'none',
+                  marginBottom: '1.5rem'
+                }}
+              />
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                  <button className="btn-outline" style={{ fontSize: '0.85rem', padding: '0.6rem 1.25rem' }}>Upload Document</button>
+                  <button className="btn-outline" style={{ fontSize: '0.85rem', padding: '0.6rem 1.25rem' }}>Scan URL</button>
+                </div>
+                <Link href="/analyzer" className="btn-primary" style={{ padding: '0.85rem 2rem' }}>
+                  Run Enterprise Analysis <ArrowRight size={18} />
+                </Link>
+              </div>
+            </div>
+            
+            <div style={{ marginTop: '3rem', display: 'flex', justifyContent: 'center', gap: '3rem', opacity: 0.6 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem' }}>
+                <CheckCircle2 size={16} color="var(--success)" /> Rent-to-Own
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem' }}>
+                <CheckCircle2 size={16} color="var(--success)" /> Seller Finance
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem' }}>
+                <CheckCircle2 size={16} color="var(--success)" /> House Hacking
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       {/* Trust & Testimonials */}
       <section className="section-padding" style={{ borderTop: '1px solid rgba(0,0,0,0.05)' }}>

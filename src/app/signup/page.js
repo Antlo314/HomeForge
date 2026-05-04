@@ -2,15 +2,15 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Mail, Lock, ArrowRight, Github } from 'lucide-react';
+import { Mail, Lock, ArrowRight, User } from 'lucide-react';
 
-export default function LoginPage() {
+export default function SignupPage() {
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate login
+    // Simulate signup
     setTimeout(() => {
       window.location.href = '/dashboard/buyer';
     }, 1500);
@@ -20,8 +20,8 @@ export default function LoginPage() {
     <div style={{ backgroundColor: 'var(--bg-off-white)', minHeight: 'calc(100vh - 80px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
       <div className="card shadow-lg" style={{ width: '100%', maxWidth: '450px', padding: '3.5rem 2.5rem' }}>
         <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-          <h1 className="serif" style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>Welcome <span style={{ color: 'var(--accent)' }}>Back</span></h1>
-          <p style={{ color: 'var(--text-muted)' }}>Secure access to your property intelligence.</p>
+          <h1 className="serif" style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>Create <span style={{ color: 'var(--accent)' }}>Account</span></h1>
+          <p style={{ color: 'var(--text-muted)' }}>Join 14,000+ investors scaling with AI.</p>
         </div>
 
         <button className="btn-outline" style={{ width: '100%', justifyContent: 'center', gap: '0.75rem', marginBottom: '2rem', padding: '0.85rem' }}>
@@ -31,7 +31,7 @@ export default function LoginPage() {
             <path d="M5 14.1c-.3-.7-.4-1.5-.4-2.1s.1-1.4.4-2.1V6.7H1.2C.4 8.3 0 10.1 0 12s.4 3.7 1.2 5.3l3.8-3.2z" fill="#FBBC05"/>
             <path d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4C17.9 1.2 15.2 0 12 0 7.3 0 3.2 2.6 1.2 6.7l3.8 3.2c1-2.9 3.8-5.1 7-5.1z" fill="#EA4335"/>
           </svg>
-          Continue with Google
+          Sign Up with Google
         </button>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
@@ -40,7 +40,16 @@ export default function LoginPage() {
           <div style={{ flex: 1, height: '1px', backgroundColor: 'rgba(0,0,0,0.05)' }} />
         </div>
 
-        <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <form onSubmit={handleSignup} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+          <div style={{ position: 'relative' }}>
+            <User style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} size={18} />
+            <input 
+              type="text" 
+              placeholder="Full name" 
+              required
+              style={{ width: '100%', padding: '0.85rem 1rem 0.85rem 2.75rem', borderRadius: '10px', border: '1px solid rgba(20, 83, 45, 0.1)', outline: 'none' }}
+            />
+          </div>
           <div style={{ position: 'relative' }}>
             <Mail style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} size={18} />
             <input 
@@ -60,17 +69,17 @@ export default function LoginPage() {
             />
           </div>
           
-          <div style={{ textAlign: 'right' }}>
-            <Link href="/forgot-password" style={{ fontSize: '0.85rem', color: 'var(--primary)', fontWeight: '600' }}>Forgot password?</Link>
+          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: '1.5' }}>
+            By signing up, you agree to our <Link href="/terms" style={{ color: 'var(--primary)', fontWeight: '600' }}>Terms of Service</Link> and <Link href="/privacy" style={{ color: 'var(--primary)', fontWeight: '600' }}>Privacy Policy</Link>.
           </div>
 
           <button type="submit" disabled={loading} className="btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '1rem' }}>
-            {loading ? 'Authenticating...' : 'Sign In'} <ArrowRight size={18} />
+            {loading ? 'Creating Account...' : 'Create Account'} <ArrowRight size={18} />
           </button>
         </form>
 
         <div style={{ marginTop: '2.5rem', textAlign: 'center', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-          Don't have an account? <Link href="/signup" style={{ color: 'var(--primary)', fontWeight: '700' }}>Sign Up</Link>
+          Already have an account? <Link href="/login" style={{ color: 'var(--primary)', fontWeight: '700' }}>Sign In</Link>
         </div>
       </div>
     </div>

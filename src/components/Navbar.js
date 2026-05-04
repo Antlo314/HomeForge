@@ -32,6 +32,10 @@ export default function Navbar() {
           <Link href="/login" className="btn-primary">
             Sign In
           </Link>
+          <Link href="/signup" className="btn-accent" style={{ marginLeft: '0.5rem' }}>
+            Join Free
+          </Link>
+
         </div>
 
 
