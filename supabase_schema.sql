@@ -71,6 +71,7 @@ ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE listings ENABLE ROW LEVEL SECURITY;
 ALTER TABLE deal_analyses ENABLE ROW LEVEL SECURITY;
 ALTER TABLE activity_logs ENABLE ROW LEVEL SECURITY;
+ALTER TABLE team_memberships ENABLE ROW LEVEL SECURITY;
 
 -- Public can view active listings
 CREATE POLICY "Public listings access" ON listings FOR SELECT USING (status = 'active');
@@ -78,8 +79,14 @@ CREATE POLICY "Public listings access" ON listings FOR SELECT USING (status = 'a
 -- Users can view their own data
 CREATE POLICY "Users view own profile" ON profiles FOR SELECT USING (auth.uid() = id);
 CREATE POLICY "Users view own analyses" ON deal_analyses FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users view own team memberships" ON team_memberships FOR SELECT USING (auth.uid() = user_id);
 
 -- Admins can view everything
-CREATE POLICY "Admins view all" ON profiles FOR ALL USING (
+CREATE POLICY "Admins view all profiles" ON profiles FOR ALL USING (
   EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND role = 'admin')
 );
+
+CREATE POLICY "Admins view all activity" ON activity_logs FOR SELECT USING (
+  EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND role = 'admin')
+);
+
