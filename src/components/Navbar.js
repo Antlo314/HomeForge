@@ -24,7 +24,9 @@ export default function Navbar() {
         <div className={styles.desktopMenu}>
           <Link href="/marketplace" className={styles.link}>Marketplace</Link>
           <Link href="/analyzer" className={styles.link}>AI Analyzer</Link>
+          <Link href="/#how-it-works" className={styles.link}>How It Works</Link>
           <Link href="/pricing" className={styles.link}>Pricing</Link>
+
           <div style={{ width: '1px', height: '24px', backgroundColor: 'rgba(0,0,0,0.1)', margin: '0 0.5rem' }} />
           <Link href="/dashboard/buyer" className={styles.link}>Dashboard</Link>
           <Link href="/login" className="btn-primary">

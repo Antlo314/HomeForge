@@ -178,7 +178,38 @@ export default function Home() {
         </div>
       </section>
 
+      {/* How It Works Section */}
+      <section id="how-it-works" className="section-padding">
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+            <h2 className="serif" style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>The HomeForge <span style={{ color: 'var(--accent)' }}>Workflow</span></h2>
+            <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto', fontSize: '1.1rem' }}>
+              Institutional-grade analysis and matching, simplified for modern property investors.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem' }}>
+            {[
+              { step: '01', title: 'Connect Assets', desc: 'Securely link your portfolio or paste listing details into our AI engine.' },
+              { step: '02', title: 'AI Simulation', desc: 'Gemini-powered models run 100+ simulations on creative pathways.' },
+              { step: '03', title: 'Risk Audit', desc: 'Our compliance engine flags legal risks and structural red flags.' },
+              { step: '04', title: 'Close Deal', desc: 'Connect directly with sellers or buyers to execute creative contracts.' }
+            ].map((item, i) => (
+              <div key={i} style={{ position: 'relative' }}>
+                <div style={{ fontSize: '4rem', fontWeight: '800', color: 'var(--bg-warm)', lineHeight: '1', marginBottom: '1rem' }}>{item.step}</div>
+                <h3 className="serif" style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>{item.title}</h3>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>{item.desc}</p>
+                {i < 3 && (
+                  <div style={{ position: 'absolute', top: '2rem', right: '-1rem', width: '2rem', height: '1px', backgroundColor: 'var(--bg-warm)', display: 'none' }} />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
+
       <section className="section-padding">
         <div className="container">
           <div className="card" style={{ 
