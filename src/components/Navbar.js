@@ -23,12 +23,15 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <div className={styles.desktopMenu}>
           <Link href="/marketplace" className={styles.link}>Marketplace</Link>
-          <Link href="/analyzer" className={styles.link}>Deal Analyzer</Link>
+          <Link href="/analyzer" className={styles.link}>AI Analyzer</Link>
           <Link href="/pricing" className={styles.link}>Pricing</Link>
+          <div style={{ width: '1px', height: '24px', backgroundColor: 'rgba(0,0,0,0.1)', margin: '0 0.5rem' }} />
+          <Link href="/dashboard/buyer" className={styles.link}>Dashboard</Link>
           <Link href="/login" className="btn-primary">
             Sign In
           </Link>
         </div>
+
 
         {/* Mobile Toggle */}
         <button 

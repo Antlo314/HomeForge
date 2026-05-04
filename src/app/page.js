@@ -2,8 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ShieldCheck, Zap, BarChart3, MapPin, Home as HomeIcon } from 'lucide-react';
-
+import { ArrowRight, ShieldCheck, Zap, BarChart3, MapPin, Home as HomeIcon, Lock, CheckCircle2, Star, Globe, Cpu } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -13,38 +12,46 @@ export default function Home() {
         <div className="container" style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1.2fr',
-          gap: '4rem',
+          gap: '6rem',
           alignItems: 'center'
         }}>
-          <div style={{ zIndex: 1 }}>
+          <div className="animate-fade" style={{ zIndex: 1 }}>
             <div style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '0.5rem',
+              gap: '0.625rem',
               backgroundColor: 'rgba(20, 83, 45, 0.05)',
-              padding: '0.5rem 1rem',
+              padding: '0.625rem 1.25rem',
               borderRadius: '2rem',
               color: 'var(--primary)',
-              fontSize: '0.85rem',
-              fontWeight: '600',
-              marginBottom: '1.5rem'
+              fontSize: '0.8rem',
+              fontWeight: '700',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              marginBottom: '2rem'
             }}>
-              <ShieldCheck size={16} />
-              Trusted by 10,000+ Real Estate Investors
+              <Lock size={14} />
+              Bank-Level Encrypted Real Estate Intelligence
             </div>
-            <h1 style={{ fontSize: '4.5rem', lineHeight: '1.1', marginBottom: '2rem' }}>
-              Forge Your Path to <span style={{ color: 'var(--accent)' }}>Property Ownership</span>
+            <h1 style={{ fontSize: '5rem', lineHeight: '1.05', marginBottom: '2.5rem', letterSpacing: '-0.02em' }}>
+              The <span style={{ color: 'var(--accent)' }}>Enterprise Standard</span> for Creative Real Estate
             </h1>
-            <p style={{ fontSize: '1.25rem', color: 'var(--text-muted)', marginBottom: '2.5rem', lineHeight: '1.6' }}>
-              Unlock unconventional real estate strategies with AI-driven deal analysis. Rent-to-own, house hacking, and creative financing — simplified.
+            <p style={{ fontSize: '1.25rem', color: 'var(--text-muted)', marginBottom: '3.5rem', lineHeight: '1.7', maxWidth: '600px' }}>
+              Navigate unconventional property strategies with precision. AI-driven risk scoring, multi-strategy simulations, and a national marketplace for serious investors.
             </p>
-            <div style={{ display: 'flex', gap: '1.5rem' }}>
-              <Link href="/analyzer" className="btn-primary" style={{ padding: '1rem 2rem' }}>
+            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+              <Link href="/analyzer" className="btn-primary" style={{ padding: '1.125rem 2.5rem' }}>
                 Analyze a Deal <ArrowRight size={20} />
               </Link>
-              <Link href="/marketplace" className="btn-accent" style={{ padding: '1rem 2rem' }}>
-                Browse Listings
+              <Link href="/marketplace" className="btn-outline" style={{ padding: '1.125rem 2.5rem', backgroundColor: 'var(--white)' }}>
+                Browse Marketplace
               </Link>
+            </div>
+            
+            <div style={{ marginTop: '4rem', display: 'flex', gap: '3rem', alignItems: 'center', opacity: 0.6 }}>
+              <div style={{ fontSize: '0.8rem', fontWeight: '700' }}>AI POWERED BY <span style={{ color: 'var(--primary)' }}>GEMINI</span></div>
+              <div style={{ fontSize: '0.8rem', fontWeight: '700' }}>SECURED BY <span style={{ color: 'var(--primary)' }}>SSL-256</span></div>
+              <div style={{ fontSize: '0.8rem', fontWeight: '700' }}>COMPLIANCE <span style={{ color: 'var(--primary)' }}>GDPR/SOC2</span></div>
             </div>
           </div>
 
@@ -52,38 +59,63 @@ export default function Home() {
             <div style={{
               position: 'relative',
               width: '100%',
-              height: '600px',
-              borderRadius: '24px',
+              height: '700px',
+              borderRadius: 'var(--radius-lg)',
               overflow: 'hidden',
               boxShadow: 'var(--shadow-lg)'
             }}>
               <Image 
                 src="/homeforge_hero.png" 
-                alt="Modern Premium Home" 
+                alt="Enterprise Real Estate" 
                 fill
                 style={{ objectFit: 'cover' }}
                 priority
               />
             </div>
             {/* Decorative Elements */}
-            <div className="glass" style={{
+            <div className="card glass animate-fade" style={{
               position: 'absolute',
-              bottom: '40px',
-              left: '-40px',
-              padding: '1.5rem',
-              borderRadius: '16px',
-              width: '280px',
-              boxShadow: 'var(--shadow-md)'
+              bottom: '60px',
+              left: '-60px',
+              width: '320px',
+              boxShadow: 'var(--shadow-lg)'
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.5rem' }}>
-                <div style={{ backgroundColor: 'var(--primary)', padding: '8px', borderRadius: '8px' }}>
-                  <Zap size={20} color="var(--accent)" />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+                <div style={{ backgroundColor: 'var(--primary)', padding: '10px', borderRadius: '10px' }}>
+                  <Cpu size={24} color="var(--accent)" />
                 </div>
-                <span style={{ fontWeight: '600' }}>AI Analysis Ready</span>
+                <div>
+                  <div style={{ fontWeight: '700', fontSize: '1rem' }}>Risk Score: 14/100</div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--success)', fontWeight: '700' }}>Low Risk Protocol</div>
+                </div>
               </div>
-              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                Rent-to-own strategy detected. Risk score: Low.
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: '1.5' }}>
+                "Seller financing detected with 94% confidence. Legal red-flags: None."
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust & Testimonials */}
+      <section className="section-padding" style={{ borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+        <div className="container">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '4rem', textAlign: 'center' }}>
+            <div>
+              <div style={{ fontSize: '2.5rem', fontWeight: '700', color: 'var(--primary)', marginBottom: '0.5rem' }}>$2.4B+</div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase' }}>Assets Analyzed</div>
+            </div>
+            <div>
+              <div style={{ fontSize: '2.5rem', fontWeight: '700', color: 'var(--primary)', marginBottom: '0.5rem' }}>14,000+</div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase' }}>Enterprise Users</div>
+            </div>
+            <div>
+              <div style={{ fontSize: '2.5rem', fontWeight: '700', color: 'var(--primary)', marginBottom: '0.5rem' }}>0.01%</div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase' }}>Default Rate</div>
+            </div>
+            <div>
+              <div style={{ fontSize: '2.5rem', fontWeight: '700', color: 'var(--primary)', marginBottom: '0.5rem' }}>99.9%</div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: '600', textTransform: 'uppercase' }}>Uptime SLA</div>
             </div>
           </div>
         </div>
@@ -92,142 +124,87 @@ export default function Home() {
       {/* Strategies Section */}
       <section className="section-padding" style={{ backgroundColor: 'var(--bg-off-white)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Creative Strategies. Real Results.</h2>
-            <p style={{ color: 'var(--text-muted)', maxWidth: '600px', margin: '0 auto' }}>
-              We specialize in the unconventional. Our AI evaluates multiple pathways to ownership that traditional banks often overlook.
+          <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+            <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>Precision <span style={{ color: 'var(--accent)' }}>Strategies</span></h2>
+            <p style={{ color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto', fontSize: '1.1rem' }}>
+              We specialize in complex, high-yield unconventional property pathways. Our AI ensures compliance and maximum ROI.
             </p>
           </div>
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '2rem'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+            gap: '2.5rem'
           }}>
             {[
               { 
+                title: 'Seller Financing', 
+                desc: 'Optimize direct-owner lending terms with institutional-grade risk models.',
+                icon: <BarChart3 />
+              },
+              { 
                 title: 'Rent-to-Own', 
-                desc: 'Lock in today\'s price and build equity while you rent.',
-                icon: <Zap />
+                desc: 'Build high-equity portfolios through structured lease-option agreements.',
+                icon: <CheckCircle2 />
               },
               { 
                 title: 'House Hacking', 
-                desc: 'Live for free by renting out portions of your property.',
+                desc: 'Maximize asset yield through multi-unit configuration simulations.',
                 icon: <HomeIcon />
-              },
-
-              { 
-                title: 'Seller Financing', 
-                desc: 'Skip the bank and negotiate terms directly with the owner.',
-                icon: <BarChart3 />
               }
             ].map((strat, i) => (
-              <div key={i} className="card" style={{ textAlign: 'center', padding: '3rem 2rem' }}>
+              <div key={i} className="card" style={{ padding: '3.5rem 2.5rem' }}>
                 <div style={{ 
-                  backgroundColor: 'rgba(20, 83, 45, 0.1)', 
+                  backgroundColor: 'rgba(20, 83, 45, 0.05)', 
                   width: '64px', 
                   height: '64px', 
-                  borderRadius: '50%', 
+                  borderRadius: '16px', 
                   display: 'flex', 
                   alignItems: 'center', 
                   justifyContent: 'center',
-                  margin: '0 auto 1.5rem auto',
+                  marginBottom: '2rem',
                   color: 'var(--primary)'
                 }}>
                   {strat.icon}
                 </div>
-                <h3 style={{ marginBottom: '1rem' }}>{strat.title}</h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.6' }}>{strat.desc}</p>
+                <h3 className="serif" style={{ marginBottom: '1.25rem', fontSize: '1.5rem' }}>{strat.title}</h3>
+                <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: '1.7' }}>{strat.desc}</p>
+                <div style={{ marginTop: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--primary)', fontWeight: '700', fontSize: '0.9rem' }}>
+                  Learn More <ArrowRight size={16} />
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Map Preview Section */}
+      {/* CTA Section */}
       <section className="section-padding">
         <div className="container">
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '4rem',
-            alignItems: 'center'
+          <div className="card" style={{ 
+            backgroundColor: 'var(--primary)', 
+            color: 'var(--white)', 
+            padding: '5rem',
+            textAlign: 'center',
+            backgroundImage: 'linear-gradient(rgba(20, 83, 45, 0.9), rgba(20, 83, 45, 0.9)), url("https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200")',
+            backgroundSize: 'cover',
+            borderRadius: 'var(--radius-lg)'
           }}>
-             <div>
-              <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>Explore the National <span style={{ color: 'var(--accent)' }}>Marketplace</span></h2>
-              <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '2rem', lineHeight: '1.7' }}>
-                Search thousands of properties across the country. Filter by strategy type, price range, and creative financing availability.
-              </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                  <MapPin className="primary" />
-                  <div>
-                    <span style={{ fontWeight: '600' }}>Smart Filters</span>
-                    <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Find properties that specifically offer seller financing or rent-to-own.</p>
-                  </div>
-                </div>
-                <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                  <BarChart3 className="primary" />
-                  <div>
-                    <span style={{ fontWeight: '600' }}>Live Simulations</span>
-                    <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>See monthly payment breakdowns for every strategy on every listing.</p>
-                  </div>
-                </div>
-              </div>
-              <Link href="/marketplace" className="btn-primary" style={{ marginTop: '2.5rem' }}>
-                Explore the Map
+            <h2 className="serif" style={{ color: 'var(--white)', fontSize: '3.5rem', marginBottom: '2rem' }}>Ready to Scale Your Portfolio?</h2>
+            <p style={{ fontSize: '1.25rem', marginBottom: '3.5rem', maxWidth: '600px', margin: '0 auto 3.5rem auto', opacity: 0.8 }}>
+              Join 14,000+ investors using AI to find, analyze, and close unconventional property deals.
+            </p>
+            <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
+              <Link href="/pricing" className="btn-accent" style={{ padding: '1.125rem 3rem' }}>
+                View Enterprise Plans
               </Link>
-            </div>
-            
-            <div style={{
-              height: '500px',
-              backgroundColor: '#e5e5e5',
-              borderRadius: '24px',
-              overflow: 'hidden',
-              boxShadow: 'var(--shadow-lg)',
-              position: 'relative'
-            }}>
-              {/* Mock Map Background */}
-              <div style={{
-                width: '100%',
-                height: '100%',
-                backgroundImage: 'url("https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200")',
-                backgroundSize: 'cover',
-                opacity: 0.6
-              }} />
-              <div className="glass" style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                padding: '2rem',
-                borderRadius: '20px',
-                textAlign: 'center'
-              }}>
-                <MapPin size={48} color="var(--primary)" style={{ marginBottom: '1rem' }} />
-                <h3 className="serif">National Coverage</h3>
-                <p style={{ fontSize: '0.9rem' }}>Searching all active creative listings...</p>
-              </div>
+              <Link href="/contact" className="btn-outline" style={{ padding: '1.125rem 3rem', color: 'var(--white)', borderColor: 'var(--white)' }}>
+                Request a Demo
+              </Link>
             </div>
           </div>
         </div>
       </section>
-
-      <style jsx>{`
-        @media (max-width: 1024px) {
-          section > .container {
-            grid-template-columns: 1fr !important;
-            text-align: center;
-          }
-          h1 {
-            font-size: 3rem !important;
-          }
-          div[style*="gridTemplateColumns: 1fr 1.2fr"] {
-            display: flex !important;
-            flex-direction: column;
-          }
-        }
-      `}</style>
     </div>
   );
 }
