@@ -7,17 +7,22 @@ export const metadata = {
   description: "Experience the future of real estate with HomeForge. AI-driven deal analysis for rent-to-own, seller financing, and house hacking.",
 };
 
+import { AuthProvider } from "@/context/AuthContext";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        <main style={{ minHeight: '100vh', paddingTop: '80px' }}>
-          {children}
-        </main>
-        <Footer />
+        <AuthProvider>
+          <Navbar />
+          <main style={{ minHeight: '100vh', paddingTop: '80px' }}>
+            {children}
+          </main>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
 }
+
 

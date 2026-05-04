@@ -25,6 +25,8 @@ export default function AnalyzerPage() {
   const [progress, setProgress] = useState(0);
   const [result, setResult] = useState(null);
 
+  const [file, setFile] = useState(null);
+
   useEffect(() => {
     let interval;
     if (loading) {
@@ -58,11 +60,20 @@ export default function AnalyzerPage() {
   }, [loading]);
 
   const handleAnalyze = () => {
-    if (!listingText) return;
+    if (!listingText && !file) return;
     setAnalyzed(false);
     setProgress(0);
     setLoading(true);
   };
+
+  const handleFileUpload = (e) => {
+    const uploadedFile = e.target.files[0];
+    if (uploadedFile) {
+      setFile(uploadedFile);
+      setListingText(`File: ${uploadedFile.name} detected. AI parsing active...`);
+    }
+  };
+
 
   return (
     <div style={{ backgroundColor: 'var(--bg-off-white)', minHeight: 'calc(100vh - 80px)' }}>
@@ -108,11 +119,19 @@ export default function AnalyzerPage() {
             <h1 className="serif" style={{ fontSize: '3.5rem', marginBottom: '2rem' }}>AI Deal <span style={{ color: 'var(--accent)' }}>Analyzer</span></h1>
             
             <div className="card" style={{ padding: '2.5rem' }}>
-              <p style={{ fontWeight: '600', marginBottom: '1.5rem' }}>Paste Listing Details</p>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+                <p style={{ fontWeight: '600' }}>Property Details</p>
+                <label style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--primary)', fontSize: '0.85rem', fontWeight: '700' }}>
+                  <Upload size={16} /> 
+                  {file ? file.name : 'Upload Document'}
+                  <input type="file" style={{ display: 'none' }} onChange={handleFileUpload} />
+                </label>
+              </div>
               <textarea 
                 placeholder="Paste the Zillow/MLS description or seller terms here..."
                 value={listingText}
                 onChange={(e) => setListingText(e.target.value)}
+
                 style={{
                   width: '100%',
                   height: '250px',

@@ -3,18 +3,28 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Mail, Lock, ArrowRight, Github } from 'lucide-react';
+import { useAuth } from '@/context/AuthContext';
 
 export default function LoginPage() {
   const [loading, setLoading] = useState(false);
+  const { signIn, signInWithGoogle } = useAuth();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate login
-    setTimeout(() => {
-      window.location.href = '/dashboard/buyer';
-    }, 1500);
+    setError('');
+    const { error: loginError } = await signIn(email, password);
+    if (loginError) {
+      setError(loginError.message);
+      setLoading(false);
+    } else {
+      window.location.href = '/dashboard';
+    }
   };
+
 
   return (
     <div style={{ backgroundColor: 'var(--bg-off-white)', minHeight: 'calc(100vh - 80px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
@@ -41,12 +51,15 @@ export default function LoginPage() {
         </div>
 
         <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          {error && <div style={{ color: 'var(--error)', fontSize: '0.85rem', textAlign: 'center' }}>{error}</div>}
           <div style={{ position: 'relative' }}>
             <Mail style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} size={18} />
             <input 
               type="email" 
               placeholder="Email address" 
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               style={{ width: '100%', padding: '0.85rem 1rem 0.85rem 2.75rem', borderRadius: '10px', border: '1px solid rgba(20, 83, 45, 0.1)', outline: 'none' }}
             />
           </div>
@@ -56,9 +69,12 @@ export default function LoginPage() {
               type="password" 
               placeholder="Password" 
               required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               style={{ width: '100%', padding: '0.85rem 1rem 0.85rem 2.75rem', borderRadius: '10px', border: '1px solid rgba(20, 83, 45, 0.1)', outline: 'none' }}
             />
           </div>
+
           
           <div style={{ textAlign: 'right' }}>
             <Link href="/forgot-password" style={{ fontSize: '0.85rem', color: 'var(--primary)', fontWeight: '600' }}>Forgot password?</Link>

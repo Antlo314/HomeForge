@@ -3,18 +3,28 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Mail, Lock, ArrowRight, User } from 'lucide-react';
+import { useAuth } from '@/context/AuthContext';
 
 export default function SignupPage() {
   const [loading, setLoading] = useState(false);
+  const { signUp } = useAuth();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate signup
-    setTimeout(() => {
-      window.location.href = '/dashboard/buyer';
-    }, 1500);
+    setError('');
+    const { error: signUpError } = await signUp(email, password);
+    if (signUpError) {
+      setError(signUpError.message);
+      setLoading(false);
+    } else {
+      window.location.href = '/dashboard';
+    }
   };
+
 
   return (
     <div style={{ backgroundColor: 'var(--bg-off-white)', minHeight: 'calc(100vh - 80px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
@@ -41,6 +51,7 @@ export default function SignupPage() {
         </div>
 
         <form onSubmit={handleSignup} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+          {error && <div style={{ color: 'var(--error)', fontSize: '0.85rem', textAlign: 'center' }}>{error}</div>}
           <div style={{ position: 'relative' }}>
             <User style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} size={18} />
             <input 
@@ -56,6 +67,8 @@ export default function SignupPage() {
               type="email" 
               placeholder="Email address" 
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               style={{ width: '100%', padding: '0.85rem 1rem 0.85rem 2.75rem', borderRadius: '10px', border: '1px solid rgba(20, 83, 45, 0.1)', outline: 'none' }}
             />
           </div>
@@ -65,9 +78,12 @@ export default function SignupPage() {
               type="password" 
               placeholder="Password" 
               required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               style={{ width: '100%', padding: '0.85rem 1rem 0.85rem 2.75rem', borderRadius: '10px', border: '1px solid rgba(20, 83, 45, 0.1)', outline: 'none' }}
             />
           </div>
+
           
           <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: '1.5' }}>
             By signing up, you agree to our <Link href="/terms" style={{ color: 'var(--primary)', fontWeight: '600' }}>Terms of Service</Link> and <Link href="/privacy" style={{ color: 'var(--primary)', fontWeight: '600' }}>Privacy Policy</Link>.

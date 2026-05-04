@@ -5,8 +5,11 @@ import { Home, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import styles from './Navbar.module.css';
 
+import { useAuth } from '@/context/AuthContext';
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, signOut } = useAuth();
 
   return (
     <nav className={`${styles.nav} glass`}>
@@ -28,15 +31,26 @@ export default function Navbar() {
           <Link href="/pricing" className={styles.link}>Pricing</Link>
 
           <div style={{ width: '1px', height: '24px', backgroundColor: 'rgba(0,0,0,0.1)', margin: '0 0.5rem' }} />
-          <Link href="/dashboard/buyer" className={styles.link}>Dashboard</Link>
-          <Link href="/login" className="btn-primary">
-            Sign In
-          </Link>
-          <Link href="/signup" className="btn-accent" style={{ marginLeft: '0.5rem' }}>
-            Join Free
-          </Link>
-
+          
+          {user ? (
+            <>
+              <Link href="/dashboard" className={styles.link}>Dashboard</Link>
+              <button onClick={signOut} className="btn-outline" style={{ fontSize: '0.85rem' }}>
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link href="/login" className="btn-primary">
+                Sign In
+              </Link>
+              <Link href="/signup" className="btn-accent" style={{ marginLeft: '0.5rem' }}>
+                Join Free
+              </Link>
+            </>
+          )}
         </div>
+
 
 
         {/* Mobile Toggle */}
