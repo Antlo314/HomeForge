@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { Facebook, Twitter, Instagram, Linkedin, Home } from 'lucide-react';
+import { Globe, Share2, Mail, MessageSquare, Home } from 'lucide-react';
+
 
 export default function Footer() {
   return (
@@ -57,11 +58,12 @@ export default function Footer() {
           <div>
             <h4 style={{ color: 'var(--accent)', marginBottom: '1.5rem', fontSize: '1rem', fontWeight: '600' }}>Connect</h4>
             <div style={{ display: 'flex', gap: '1rem' }}>
-              <a href="#" style={{ color: 'var(--white)', opacity: 0.8 }}><Facebook size={20} /></a>
-              <a href="#" style={{ color: 'var(--white)', opacity: 0.8 }}><Twitter size={20} /></a>
-              <a href="#" style={{ color: 'var(--white)', opacity: 0.8 }}><Instagram size={20} /></a>
-              <a href="#" style={{ color: 'var(--white)', opacity: 0.8 }}><Linkedin size={20} /></a>
+              <a href="#" style={{ color: 'var(--white)', opacity: 0.8 }}><Globe size={20} /></a>
+              <a href="#" style={{ color: 'var(--white)', opacity: 0.8 }}><Share2 size={20} /></a>
+              <a href="#" style={{ color: 'var(--white)', opacity: 0.8 }}><Mail size={20} /></a>
+              <a href="#" style={{ color: 'var(--white)', opacity: 0.8 }}><MessageSquare size={20} /></a>
             </div>
+
           </div>
         </div>
 

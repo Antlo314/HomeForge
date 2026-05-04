@@ -1,6 +1,9 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ShieldCheck, Zap, BarChart3, MapPin } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Zap, BarChart3, MapPin, Home } from 'lucide-react';
+
 
 export default function Home() {
   return (
